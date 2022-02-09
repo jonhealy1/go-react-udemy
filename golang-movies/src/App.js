@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
-function App() {
+export default function App() {
   return (
+    <Router>
     <div className="container">
       <div className="row">
         <h1 className="mt-3">
@@ -16,13 +17,13 @@ function App() {
           <nav>
             <ul className="list-group">
               <li className="list-group-item">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="list-group-item">
-                <a href="/movies">Movies</a>
+                <Link to="/movies">Movies</Link>
               </li>
               <li className="list-group-item">
-                <a href="/admin">Manage Catalog</a>
+                <Link to="/admin">Manage Catalog</Link>
               </li>
             </ul>
           </nav>
@@ -32,7 +33,6 @@ function App() {
         </div>
       </div>
     </div>
+    </Router>
   );
 }
-
-export default App;
