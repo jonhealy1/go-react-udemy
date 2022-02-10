@@ -4,6 +4,7 @@ import Movies from './components/Movies';
 import Home from './components/Home';
 import Admin from './components/Admin';
 import Categories from './components/Categories';
+import OneMovie from  './components/OneMovie';
 
 export default function App() {
   return (
@@ -37,9 +38,9 @@ export default function App() {
         </div>
         <div className="col-md-10">
           <Switch>
-            <Route path="/movies/:id">
-              <Movie />
-            </Route>
+            <Route path="/movies/:id" component={OneMovie} />
+
+
             <Route path="/movies">
               <Movies />
             </Route>
@@ -72,11 +73,6 @@ export default function App() {
     </div>
     </Router>
   );
-}
-
-function Movie() {
-  let { id } = useParams();
-  return <h2>Movie id {id}</h2>
 }
 
 function CategoryPage() {
