@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
 
 export default function App() {
   return (
@@ -29,10 +29,33 @@ export default function App() {
           </nav>
         </div>
         <div className="col-md-10">
+          <Switch>
+            <Route path="/movies">
+              <Movies />
+            </Route>
+            <Route path="/admin">
+              <Admin />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
 
         </div>
       </div>
     </div>
     </Router>
   );
+}
+
+function Home() {
+  return <h2>Home</h2>
+}
+
+function Movies() {
+  return <h2>Movies</h2>
+}
+
+function Admin() {
+  return <h2>Manage Catalog</h2>
 }
