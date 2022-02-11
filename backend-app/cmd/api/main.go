@@ -2,6 +2,8 @@ package main
 
 import "flag"
 import "fmt"
+import "net/http"
+import "log"
 
 const version = "1.0.0"
 
@@ -18,4 +20,14 @@ func main() {
 	flag.Parse()
 
 	fmt.Println("Running")
+
+	http.HandleFunc("/status", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "status")
+	})
+
+	err := http.ListenAndServe(fmt.Sprintf(":%d", cfg.port), nil)
+	if err != nil {
+		log.Println(err)
+	}
+
 }
