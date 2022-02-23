@@ -8,6 +8,7 @@ import "net/http"
 import "log"
 import "time"
 import "os"
+import "backend/models"
 
 import _ "github.com/lib/pq"
 
@@ -30,6 +31,7 @@ type AppStatus struct {
 type application struct {
 	config config 
 	logger *log.Logger
+	models models.Models
 }
 
 func main() {
@@ -52,6 +54,7 @@ func main() {
 	app := &application {
 		config: cfg,
 		logger: logger,
+		models: models.NewModels(db),
 	}
 
 	srv := &http.Server{
